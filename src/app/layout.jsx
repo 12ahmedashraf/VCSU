@@ -1,6 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Anton, League_Spartan } from "next/font/google";
 import "./globals.css";
+import NavBar from "@/components/navBar";
+const anton = Anton({
+  weight: "400",
+  subsets:['latin'],
+  variable: "--font-anton",
+  display: "swap",
+});
+const leagueSpartan = League_Spartan({
+  subsets:['latin'],
+  variable: "--font-league",
+  display: "swap",
 
+});
 export const metadata = {
   title: "VCSU",
   description: "Victoria College Students' Union",
@@ -8,9 +20,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${anton.variable} ${leagueSpartan.variable}`}>
       <body>
+        {<NavBar/>}
         {children}
+      
       </body>
     </html>
   );
