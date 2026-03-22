@@ -1,4 +1,5 @@
 import { Facebook , Mail ,Globe,Github} from "lucide-react";
+import Link from "next/link";
 export default function Footer()
 {
     return(
@@ -6,7 +7,7 @@ export default function Footer()
         <footer className="border-t-accent border-t-2 mt-20">
             <div className="links-footer flex justify-between my-20 mx-10 items-center">
                 <div className="left flex justify-between items-center gap-30">
-                    <div ><h1 className="text-foreground font-anton text-6xl hover:cursor-pointer hover:text-accent transition-colors duration-300">VCSU</h1></div>
+                    <div ><Link href="/"><h1 className="text-foreground font-anton text-6xl hover:cursor-pointer hover:text-accent transition-colors duration-300">VCSU</h1></Link></div>
                     <div className="social gap-5 flex flex-col">
                         <div><h1 className="text-foreground font-anton text-xl ">Social</h1></div>
                         <div className="social-links gap-5 flex-col flex items-center">
@@ -24,37 +25,37 @@ export default function Footer()
                             >
                             <Mail size={20} strokeWidth={1.5}/>
                             </a>
-                                    <a 
-                            href="https://www.facebook.com/vcstudentunion" 
+                                    <Link 
+                            href="/" 
                             target="_blank" 
                             className="text-white hover:text-accent  transition-colors duration-300"
                             >
                             <Globe size={20} strokeWidth={1.5}/>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="quick-links gap-5 flex flex-col">
                         <div><h1 className="text-foreground font-anton text-xl ">Quick Links</h1></div>
                         <div className="social-links gap-5 flex-col flex items-center">
-                                                <a 
-                            href="#" 
+                                                <Link
+                            href="/" 
                             target="_blank" 
                             className="text-white hover:text-accent transition-colors duration-300 font-league"
                             >
                             <h2>Home</h2>
-                            </a>
-                                <a 
-                            href="#legacy" 
+                            </Link>
+                                <Link 
+                            href="/#legacy" 
                             className="text-white hover:text-accent transition-colors duration-300 font-league"
                             >
                             <h2>Our Legacy</h2>
-                            </a>
-                            <a 
-                            href="#mission" 
+                            </Link>
+                            <Link 
+                            href="/#mission" 
                             className="text-white hover:text-accent transition-colors duration-300 font-league"
                             >
                             <h2>Our Mission</h2>
-                            </a>
+                            </Link>
                             
                         </div>
 
