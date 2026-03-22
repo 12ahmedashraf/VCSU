@@ -1,6 +1,7 @@
 import { Anton, League_Spartan } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/navBar";
+import Footer from "@/components/footer";
 const anton = Anton({
   weight: "400",
   subsets:['latin'],
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
       <body>
         {<NavBar/>}
         {children}
-      
+      {<Footer/>}
       </body>
     </html>
   );
