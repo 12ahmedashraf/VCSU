@@ -1,7 +1,21 @@
+'use client'
 import Image from "next/image";
 import vcsu from "../../public/vcsu.png"
 import legacy from "../../public/legacy.png"
+import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 export default function Home() {
+  const router =useRouter();
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const error= searchParams.get('error');
+    const errorCode = searchParams.get('error_code');
+      
+    if(error === 'access_denied' || errorCode==='otp_expired')
+      router.push('/signup?error=auth-failed')
+  }
+  ,[searchParams,router]);
   return (
     <>
    <section className="hero-section  ml-30 mr-30  flex justify-between">
