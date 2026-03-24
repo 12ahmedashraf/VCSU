@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/server";
 import { redirect } from "next/navigation";
+import DashboardUI from "./dashboard";
 
 export default async function Dashboard()
 {
@@ -8,7 +9,9 @@ export default async function Dashboard()
     if(!user  || error   )
         redirect("/login");
     return(
-        <div className="bg-white"></div>
+        <div className="bg-white">
+            <DashboardUI/>
+        </div>
     );
 
 }
