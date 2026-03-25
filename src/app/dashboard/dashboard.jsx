@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { ShieldAlert,Lightbulb,Activity,Home,LogOut, Component } from "lucide-react";
 import Overview from "@/components/overView";
+import Problem from "@/components/submitProblem";
 export default function DashboardUI({user})
 {
     const [currSection, setCurrSection] = useState('overview');
@@ -13,18 +14,18 @@ export default function DashboardUI({user})
     ];
     const components = {
   overview: <Overview user={user} />,
-  problem: <div>problem form coming soon</div>, 
+  problem: <Problem user={user}/>, 
   suggestion: <div>suggestion form coming soon</div>,
   pending: <div>pending problems coming soon</div>,
 };
     return(
         <div className="content flex mt-10 gap-20 ">
-            <div className="left flex flex-col mx-10 mt-10  gap-30 items-center justify-center text-center">
+            <div className="left sticky top-10 h-fit flex flex-col mx-10 mt-10  gap-30 items-center justify-center text-center">
                 {dashIcons.map((item) => (
                     <button 
                     key={item.id}
                     onClick={() => setCurrSection(item.id)}
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer hover:scale-110 transition-all duration-300"
                     >
                     <item.icon size={22} strokeWidth={2} />
                     </button>

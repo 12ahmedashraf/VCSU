@@ -5,7 +5,7 @@ export default function NavBar({session}){
        (session) ?(
         <nav className="ml-6 mr-8 mt-4 mb-0   inset-x-0 flex justify-between z-10 ">
         <Link href="/" className=" font-anton text-4xl hover:text-accent transition-colors duration-300">VCSU</Link>
-        <div className="links flex justify-between gap-25  font-anton text-md relative">
+        <div className="links flex justify-between gap-25  font-anton text-md relative text-gray-600">
                   <a href="/logout" className="group relative">LogOut                            
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span></a>
                           <Link href="/settings" className="group relative ">Settings
