@@ -27,7 +27,16 @@ export const updateSession = async (request) => {
     }
   );
 
-  await supabase.auth.getUser();
-
+  const {data:{user}} = await supabase.auth.getUser();
+  if (user && request.nextUrl.pathname === '/login') {
+  return NextResponse.redirect(new URL('/dashboard', request.url), {
+    headers: supabaseResponse.headers, 
+  });
+}
+if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
+    return NextResponse.redirect(new URL('/login', request.url), {
+      headers: supabaseResponse.headers,
+    });
+  }
   return supabaseResponse;
 };
