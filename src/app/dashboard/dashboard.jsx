@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ShieldAlert,Lightbulb,Activity,Home,LogOut, Component } from "lucide-react";
 import Overview from "@/components/overView";
 import Problem from "@/components/submitProblem";
+import Suggestion from "@/components/submitSuggestion";
 export default function DashboardUI({user})
 {
     const [currSection, setCurrSection] = useState('overview');
@@ -15,7 +16,7 @@ export default function DashboardUI({user})
     const components = {
   overview: <Overview user={user} />,
   problem: <Problem user={user}/>, 
-  suggestion: <div>suggestion form coming soon</div>,
+  suggestion: <Suggestion user={user}/>,
   pending: <div>pending problems coming soon</div>,
 };
     return(
