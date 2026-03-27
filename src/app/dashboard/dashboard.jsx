@@ -4,7 +4,8 @@ import { ShieldAlert,Lightbulb,Activity,Home,LogOut, Component } from "lucide-re
 import Overview from "@/components/overView";
 import Problem from "@/components/submitProblem";
 import Suggestion from "@/components/submitSuggestion";
-export default function DashboardUI({user})
+import Submissions from "@/components/yourSubmissions";
+export default function DashboardUI({user,problems,suggestions})
 {
     const [currSection, setCurrSection] = useState('overview');
     const dashIcons = [
@@ -17,7 +18,7 @@ export default function DashboardUI({user})
   overview: <Overview user={user} />,
   problem: <Problem user={user}/>, 
   suggestion: <Suggestion user={user}/>,
-  pending: <div>pending problems coming soon</div>,
+  pending: <Submissions user={user} problems={problems} suggestions={suggestions} />,
 };
     return(
         <div className="content flex mt-10 gap-20 ">
