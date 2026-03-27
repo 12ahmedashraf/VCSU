@@ -1,12 +1,12 @@
 'use client'
 import { useState } from 'react';
-import { ChevronDown, Edit2, Calendar, Lock } from 'lucide-react';
+import { ChevronDown} from 'lucide-react';
+import EditForm from './editForm';
 export default function Submissions({user , problems, suggestions})
 {
     const [problemsExpanded,expandProblems] = useState(false);
     const [suggestionsExpanded,expandSuggestions] = useState(false);
     const [expandedElement,setExpandedElement] = useState(null);
-    const [editItem,setEditItem] = useState(null);
     const formatDate = (date) => {
         return new Intl.DateTimeFormat('en-GB', {
         day: 'numeric',
@@ -17,13 +17,35 @@ export default function Submissions({user , problems, suggestions})
         hour12: true
     }).format(new Date(date));
     }
-    const renderSection = (list) => {
+    const checkEdit = (date) => {
+        return ((new Date().getTime() - new Date(date).getTime()) < (24 * 60 * 60 * 1000));
+    } 
+    const problem_logs = (problem);
+    const renderExpandedElement = (item,type) => {
+        if(type=='problem')
+        {
+            
+                return(<EditForm item={item} type={type} edit={checkEdit(item.created_at)}/>);
+           
+        }
+    };
+    const renderSection = (list,typee) => {
         return list.map((item) => (
-            <div className='flex font-league mx-2  justify-between animate-in fade-in slide-in-from-top-2 fill-mode-both bg-black rounded-3xl px-8 py-2 text-white' key={item.id}>
-                <h5 className=' '>{item.title}</h5>
-                <div className="item-info flex gap-3">
-                    <h5>{formatDate(item.created_at)}</h5>
-                    <h5>{item.status}</h5>
+            <div className="itemmm" key={item.id}>
+                <div className='flex font-league mx-2  justify-between animate-in fade-in slide-in-from-top-2 fill-mode-both bg-black rounded-3xl px-8 py-2 text-white' >
+                    <h5 className=' '>{item.title}</h5>
+                    <div className="item-info flex gap-5 items-center">
+                        <div className="text-info flex gap-3">
+                            <h5>{formatDate(item.created_at)}</h5>
+                            <h5>{item.status}</h5>
+                        </div>
+                        <button onClick={() => (expandedElement === item.id ? setExpandedElement(null) : setExpandedElement(item.id))}>
+                            <ChevronDown size={25} strokeWidth={1.5} className={`hover:cursor-pointer ${expandedElement === item.id ? 'transition-transform duration-300 rotate-180' : 'transition-transform duration-300 rotate-0'}`}/>
+                        </button>
+                    </div>
+                </div>
+                <div className="expanded flex flex-col">
+                { expandedElement === item.id && renderExpandedElement(item,typee)}
                 </div>
             </div>
         ));
@@ -37,12 +59,12 @@ export default function Submissions({user , problems, suggestions})
                     <button onClick={() => expandProblems(!problemsExpanded)}>
                         <ChevronDown size={25} strokeWidth={1.5} className={`hover:cursor-pointer ${problemsExpanded ? 'transition-transform duration-300 rotate-180' : 'transition-transform duration-300 rotate-0'}`}/>
                     </button>
-                </div>
-                {problemsExpanded && (
+                </div>  {problemsExpanded && (
                     <div className='flex flex-col gap-5 m-2 mt-4'>
-                        {renderSection(problems)}
+                        {renderSection(problems,'problem')}
                     </div>
                 )}
+              
             </div>
               <div className="user-suggestions border-2 border-gray-500 px-3 mr-5 py-1 rounded-3xl">
                 <div className= "heading-suggestions flex justify-between items-center m-2">
@@ -51,7 +73,7 @@ export default function Submissions({user , problems, suggestions})
                 </div>
                    {suggestionsExpanded && (
                     <div className='flex flex-col gap-5 m-2 mt-4'>
-                        {renderSection(suggestions)}
+                        {renderSection(suggestions,'suggestion')}
                     </div>
                 )}
             </div>
