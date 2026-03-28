@@ -45,7 +45,7 @@ export default function Problem({user})
         <button type="submit"  disabled = {(isPending)} className="font-anton  border-black rounded-2xl border-2 px-4 py-2 hover:scale-110 transition-all duration-300 hover:cursor-pointer ">
             Submit
         </button></div>
-        {(!isPending) && (<p className={`font-league text-center  ${submitStatus.status === 'success' ? 'text-green-500' :'text:red-500'}`}><strong>{submitStatus.message}</strong></p>)
+        {(!isPending) && (<p className={`font-league text-center  ${submitStatus.status === 'success' ? 'text-green-500' :'text-red-500'}`}><strong>{submitStatus.message}</strong></p>)
         }
         </form>
     </div>
