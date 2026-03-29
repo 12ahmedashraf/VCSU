@@ -28,6 +28,10 @@ export default function Submissions({user , problems, suggestions})
                 return(<EditForm item={item} type={type} edit={checkEdit(item.created_at)}/>);
            
         }
+        else
+        {
+            return(<EditForm item={item} type={type} edit={checkEdit(item.created_at)}/>);
+        }
     };
     const renderSection = (list,typee) => {
         return list.map((item) => (
