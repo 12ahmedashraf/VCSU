@@ -16,7 +16,7 @@ export default function EditForm({item , type , edit})
         { type === 'problem' ? (<>
         {(edit === true) ? (
         <div className="rounded-2xl flex flex-col flex-1 ">
-            <form action={formAction} className="flex flex-col gap-5 mx-10 my-5">  
+            <form action={formAction} key={editItem ? 'editing' : 'viewing'} className="flex flex-col gap-5 mx-10 my-5">  
                 <div className="problem_title gap-2.5 flex flex-col  ">
                 <label htmlFor="problem_title" className="font-anton">Problem title</label>
             <input 
@@ -84,7 +84,7 @@ export default function EditForm({item , type , edit})
             </form>
         </div>):(<></>)}
 </>):(<div className="rounded-2xl flex flex-col flex-1 ">
-            <form action={formAction} className="flex flex-col gap-5 mx-10 my-5">  
+            <form action={formAction} key={editItem ? 'editing' : 'viewing'} className="flex flex-col gap-5 mx-10 my-5">  
                 <div className="suggestion_title gap-2.5 flex flex-col  ">
                 <label htmlFor="suggestion_title" className="font-anton">Suggestion title</label>
             <input 
