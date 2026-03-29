@@ -2,11 +2,7 @@ import EditProblem from "@/logic/EditProblem";
 import EditSuggestion from "@/logic/EditSuggestion";
 import SubmitProblem from "@/logic/submitProblem";
 import { useActionState ,useState} from "react";
-function viewLogs({item})
-{
-
-}
-export default function EditForm({item , type , edit})
+export default function EditForm({item , type })
 {
     const initialState = {status: 'pending',message : ''};
       const [editItem,setEditItem] = useState(null);
@@ -14,7 +10,7 @@ export default function EditForm({item , type , edit})
       const [actionType, setActionType] = useState("edit");
         return(<>
         { type === 'problem' ? (<>
-        {(edit === true) ? (
+        
         <div className="rounded-2xl flex flex-col flex-1 ">
             <form action={formAction} key={editItem ? 'editing' : 'viewing'} className="flex flex-col gap-5 mx-10 my-5">  
                 <div className="problem_title gap-2.5 flex flex-col  ">
@@ -82,8 +78,7 @@ export default function EditForm({item , type , edit})
     </p>
 )}
             </form>
-        </div>):(<></>)}
-</>):(<div className="rounded-2xl flex flex-col flex-1 ">
+        </div></>):(<div className="rounded-2xl flex flex-col flex-1 ">
             <form action={formAction} key={editItem ? 'editing' : 'viewing'} className="flex flex-col gap-5 mx-10 my-5">  
                 <div className="suggestion_title gap-2.5 flex flex-col  ">
                 <label htmlFor="suggestion_title" className="font-anton">Suggestion title</label>

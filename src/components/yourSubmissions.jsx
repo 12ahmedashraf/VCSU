@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { ChevronDown} from 'lucide-react';
 import EditForm from './editForm';
+import UserLogs from './userLogs';
 export default function Submissions({user , problems, suggestions})
 {
     const [problemsExpanded,expandProblems] = useState(false);
@@ -20,12 +21,13 @@ export default function Submissions({user , problems, suggestions})
     const checkEdit = (date) => {
         return ((new Date().getTime() - new Date(date).getTime()) < (24 * 60 * 60 * 1000));
     } 
-    const problem_logs = (problem);
     const renderExpandedElement = (item,type) => {
         if(type=='problem')
         {
-            
-                return(<EditForm item={item} type={type} edit={checkEdit(item.created_at)}/>);
+            if(checkEdit(item.created_at))
+                return(<EditForm item={item} type={type} />);
+            else
+                return(<UserLogs problem={item}/>);
            
         }
         else
