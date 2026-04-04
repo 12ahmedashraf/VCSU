@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/server";
 import { redirect } from "next/navigation";
+import AdminDashboard from "./adminDash";
 
 export default async function AdminDash()
 {
@@ -19,4 +20,48 @@ export default async function AdminDash()
         console.log(role);
         redirect('/dashboard');
     }
+    const {data:problemsPending,problemsPendingError} = await supabase
+    .from('student_problems')
+    .select('*')
+    .eq('status','pending')
+    .order('created_at',{ascending:false});
+    const {data:BeingSolved,BeingSolvedError} = await supabase
+    .from('student_problems')
+    .select('*')
+    .eq('status','solving')
+    .order('created_at',{ascending:false});
+    const {data:Solved,SolvedError} = await supabase
+    .from('student_problems')
+    .select('*')
+    .eq('status','solved')
+    .order('created_at',{ascending:false});
+    const {data:ignoredProblems,ignoredProblemsError} = await supabase
+    .from('student_problems')
+    .select('*')
+    .eq('status','ignored')
+    .order('created_at',{ascending:false});
+    const {data:reviewedSuggestions,reviewedSuggestionsError} = await supabase
+    .from('student_suggestions')
+    .select('*')
+    .eq('status','reviewed')
+    .order('created_at',{ascending:false});
+    const {data:pendingSuggestions,pendingSuggestionsError} = await supabase
+    .from('student_suggestions')
+    .select('*')
+    .eq('status','pending')
+    .order('created_at',{ascending:false});
+    const {data:ignoredSuggestions,ignoredSuggestionsError} = await supabase
+    .from('student_suggestions')
+    .select('*')
+    .eq('status','ignored')
+    .order('created_at',{ascending:false});
+    return(
+        <AdminDashboard user={user} pendingProblems={problemsPending} 
+        beingSolved={BeingSolved} solved={Solved}
+        ignoredProblems={ignoredProblems}
+        reviewedSuggestion={reviewedSuggestions}
+        suggestions={pendingSuggestions}
+        ignoredSuggestions={ignoredSuggestions}
+        />
+    );
 }
