@@ -1,6 +1,6 @@
 # VCSU
 
-![VCSU](/vcsu_black.png)
+![VCSU](public/vcsu_black.png)
 
 (**note: till now this is a hobbyist project which is not implemented yet irl**)
 
