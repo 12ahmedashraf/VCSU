@@ -1,9 +1,11 @@
-#VCSU
-![VCSU](public\vcsu_black.png)
+# VCSU
 
-(\*\*note: till now this is a hobbyist project which is not implemented yet irl\*\*)
-##What's VCSU?
+![VCSU](/vcsu_black.png)
 
-VCSU is a platform made by me for the students' union of my school \*Victoria College\* , I created it to learn incredible NEXT.JS and yeah it's a fun project xD.
+(**note: till now this is a hobbyist project which is not implemented yet irl**)
 
-\*\*(TechStack: Next.js , tailwind css & supabase)\*\*
+## What's VCSU?
+
+VCSU is a platform made by me for the students' union of my school _Victoria College_ , I created it to learn incredible NEXT.JS and yeah it's a fun project xD.
+
+**(TechStack: Next.js , tailwind css & supabase)**
